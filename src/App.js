@@ -55,8 +55,12 @@ const App = ({ signOut }) => {
     const data = {
       name: form.get("name"),
       description: form.get("description"),
+      image: image.name,
     };
-    if (!!data.image) await uploadData({ key: data.name, data: image });
+    if (!!data.image) await uploadData({
+       key: data.name, 
+       data: image 
+      });
       await client.graphql({
         query: createNoteMutation,
         variables: { input: data },
